@@ -1,0 +1,14 @@
+# Obsidian local state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and environment variables
+*.log
+.env
+.env.local
+.env.*.local
