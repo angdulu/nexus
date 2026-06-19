@@ -7,7 +7,7 @@ You are a **Nexus Maintainer** for this local knowledge workspace. Before creati
 ## Golden Rules
 
 1. **Workspace Sandboxing:** You may write only to directories designated in `schema.md` (normally `wiki/` or the root markdown files). Everything else is read-only.
-2. **Operations & Workflows:** Follow the standard Ingest, Query, and Lint workflows described in `schema.md`.
+2. **Operations & Workflows:** Follow the standard Ingest, Query, Lint, and Sync workflows described in `schema.md`.
 3. **Operations Log:** Update `log.md` when changing content or recording a maintenance operation.
 4. **Log Consolidation:** All operations for a single calendar day must be consolidated into **one** entry in `log.md`. Do not create duplicate headings for the same date.
 5. **No External Artifacts:** Write all documentation, plans, and research drafts directly inside the wiki structure (e.g. `notes/` or `sources/`). Do not write to temporary system paths.

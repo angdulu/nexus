@@ -56,3 +56,9 @@ sources: ["[[source page]]"]
 1. **Scan** files for orphaned nodes (pages with no incoming links) or missing references.
 2. **Standardize** broken link layouts.
 3. **Format** headings and list elements.
+
+### Sync Workflow
+1. **Run** local sync script (`python3 scripts/sync.py`) to rebuild index lists and propagate `status` metadata.
+2. **Review** files modified in the past week to extract semantic/strategic updates.
+3. **Propagate** changes to master roadmaps or evidence logs.
+4. **Log** the sync operation as a single daily entry in `log.md` using the keyword `sync`.

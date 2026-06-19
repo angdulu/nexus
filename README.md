@@ -54,7 +54,7 @@ To preserve readability and ensure that AI models do not pollute the database, a
 Clone this repository or copy the folder structure to your local drive. Open the directory as a vault inside [Obsidian](https://obsidian.md).
 
 ### 2. Configure Your AI Environment
-When using coding agents (such as Antigravity, Claude Code, or custom API wrappers), place the `AGENTS.md` system prompt inside the root directory. This acts as a sandbox boundary, directing the agent to write updates only into `wiki/` directories while enforcing schema rules.
+When using coding agents (such as Antigravity, Claude Code, or custom API wrappers), place the `AGENTS.md` system prompt inside the root directory. This acts as a sandbox boundary, directing the agent to write updates only into the note directories designated in `schema.md` (e.g. `notes/`, `sources/`, `projects/`) while enforcing schema rules.
 
 ### 3. Local Chunk-Level Synchronization (CouchDB)
 To sync your markdown notes across devices securely and offline, use the CouchDB database sync configuration:
