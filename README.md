@@ -22,6 +22,7 @@ nexus/
 ├── AGENTS.md          # Prompt guide/permissions for agent models
 ├── index.md           # Central hub cataloging all nodes
 ├── log.md             # Consolidated chronological operations log
+├── scripts/           # Maintenance scripts (sync.py)
 ├── assets/            # Graphs, diagrams, and static assets
 ├── sources/           # Summarized logs of raw ingest data (read-only)
 ├── projects/          # Multi-step execution plans and trackers
@@ -64,3 +65,31 @@ To sync your markdown notes across devices securely and offline, use the CouchDB
    ```
 2. Configure a sync plugin (such as Obsidian Self-Hosted LiveSync) to connect to `http://localhost:5984/nexus`.
 3. Map your `/etc/hosts` or local network to enable peer-to-peer replication between your phone and laptop.
+
+---
+
+## Maintenance: The Weekly Sync
+
+Wikis rot when the bookkeeping grows faster than the value. Nexus keeps that in check with a weekly two-stage sync that separates mechanical work from judgment work.
+
+### Stage 1 — Deterministic Script (syntactic bookkeeping)
+
+Run the local Python script to rebuild structural metadata. It makes no model calls:
+
+```bash
+python3 scripts/sync.py
+```
+
+It will:
+- **Rebuild `index.md`** by scanning `projects/`, `sources/`, and `notes/`, pulling each file's H1 title, `updated` date, and `description` (reusing the existing index description where a note has none), then re-sorting every section by most-recently-updated.
+- **Propagate status** into project trackers by reading the `status` frontmatter of linked notes and writing it back into any "Deliverables" table.
+
+### Stage 2 — Strategic Agent (semantic synthesis)
+
+When edits change the *meaning* of your notes rather than just their metadata, ask your AI agent to run a strategic pass. It should:
+1. Read the files modified in the past week (via `updated` dates or file mtimes).
+2. Propagate meaning-level shifts into your master synthesis notes.
+3. Report any contradictions or gaps the week's changes introduced.
+4. Log the operation as a single dated entry in `log.md` using the keyword `sync`.
+
+The split keeps cheap, mechanical work fully deterministic while reserving the model for the judgment calls.
