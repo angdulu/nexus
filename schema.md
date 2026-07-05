@@ -1,4 +1,4 @@
-# Wiki Schema & Conventions
+# Nexus Schema & Conventions
 
 This file defines the directory structure, formatting rules, and maintenance workflows for the Nexus workspace.
 
@@ -15,7 +15,11 @@ This file defines the directory structure, formatting rules, and maintenance wor
 ├── sources/           # one summary page per ingested source (immutable)
 ├── projects/          # plans and trackers
 └── notes/             # synthesized notes on entities, concepts, and analyses
+
+.claude/skills/        # agent capability layer (self-improvement) — outside content; see §4
 ```
+
+> **Access:** The Nexus content folders and root markdown files are writable. The one writable location *outside* content is `.claude/skills/` (capabilities, not knowledge). Everything else is read-only.
 
 ---
 
@@ -61,4 +65,18 @@ sources: ["[[source page]]"]
 1. **Run** local sync script (`python3 scripts/sync.py`) to rebuild index lists and propagate `status` metadata.
 2. **Review** files modified in the past week to extract semantic/strategic updates.
 3. **Propagate** changes to master roadmaps or evidence logs.
-4. **Log** the sync operation as a single daily entry in `log.md` using the keyword `sync`.
+4. **Consolidate** the learning loop: collect all `Lessons:` lines logged since the last sync; promote recurring patterns into a skill or a schema amendment, refine skills that misfired, and prune skills that never fire (see `AGENTS.md` Golden Rule 6).
+5. **Log** the sync operation as a single daily entry in `log.md` using the keyword `sync` (plus `skill` sub-bullets if skills changed).
+
+### Reflect Workflow
+Automatic — the closing step of every non-trivial operation (Ingest, Lint, Sync, or maintenance). Not a separate session; it happens inside the operation that just ran.
+1. **Ask** briefly: did anything mislead, surprise, or repeat? Was any instruction in the schema or `AGENTS.md` wrong or missing? Did a reusable multi-step procedure emerge?
+2. **Record** the answer as a single `- Lessons:` line in the day's `log.md` entry. No lesson → no line; never force one.
+3. **Act immediately** only when the lesson is sharp: fix a wrong schema claim on the spot, or create/refine a skill. Everything else waits for Sync consolidation.
+
+### Self-Improvement Workflow (Skills)
+The agent's reusable *capabilities* live in `.claude/skills/`, separate from the *knowledge* in `notes/`/`sources/`. The loop is **closed** — *Execute → Reflect → Consolidate* (see `AGENTS.md` Golden Rule 6).
+1. **Create** a skill autonomously when a task surfaces a clearly reusable multi-step procedure (announce it to the user when you do), or when Sync consolidation promotes a recurring `Lessons:` pattern.
+2. **Structure:** a skill folder containing `SKILL.md` with `name` + `description` frontmatter capturing the repeatable procedure.
+3. **Refine** an existing skill's `SKILL.md` when it underperforms in use, rather than spawning a near-duplicate.
+4. **Log** the operation as a single daily entry in `log.md` using the keyword `skill`. Keep skills few — each `description` permanently occupies agent context.

@@ -3,7 +3,7 @@ import os
 import re
 import datetime
 
-# Find the wiki directory relative to this script
+# Find the nexus directory relative to this script
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 WIKI_DIR = os.path.dirname(SCRIPT_DIR)
 
@@ -330,13 +330,13 @@ def update_all_deliverables_dashboards():
             update_deliverables_dashboard(abs_path)
 
 def main():
-    print("Starting Wiki Sync Operation...")
+    print("Starting Nexus Sync Operation...")
     index_path = os.path.join(WIKI_DIR, 'index.md')
     
     existing_descriptions = extract_existing_index_descriptions(index_path)
     rebuild_index(index_path, existing_descriptions)
     update_all_deliverables_dashboards()
-    print("Wiki Sync Operation Completed.")
+    print("Nexus Sync Operation Completed.")
 
 if __name__ == '__main__':
     main()

@@ -1,15 +1,15 @@
 ---
 tags: [project, meta, schema, maintenance]
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-21
 status: "🟢 Completed"
-description: "Documentation and prompt templates for the weekly deterministic (Script) and strategic (Agent) wiki sync system."
+description: "Documentation and prompt templates for the weekly deterministic (Script) and strategic (Agent) Nexus sync system."
 sources: ["[[schema]]"]
 ---
 
-# Project: Wiki Sync Plan & Runbook
+# Project: Nexus Sync Plan & Runbook
 
-This note defines the workflow, script details, and agent instructions for the weekly Nexus wiki sync system. It combines **Option C (Deterministic Script Sync)** and **Option A (Strategic Agent Sync)** to ensure that micro-updates to individual notes propagate cleanly to macro-level dashboards and playbooks.
+This note defines the workflow, script details, and agent instructions for the weekly Nexus sync system. It combines **Option C (Deterministic Script Sync)** and **Option A (Strategic Agent Sync)** to ensure that micro-updates to individual notes propagate cleanly to macro-level dashboards and playbooks.
 
 ---
 
